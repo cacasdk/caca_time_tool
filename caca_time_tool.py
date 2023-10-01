@@ -1,8 +1,23 @@
-def print_hi(name):
-    # 在下面的代码行中使用断点来调试脚本。
-    print(f'Hi, {name}')  # 按 Ctrl+F8 切换断点。
+import time
 
 
-# 按装订区域中的绿色按钮以运行脚本。
-if __name__ == '__main__':
-    print_hi('PyCharm')
+class CacaTimeTool:
+    def __init__(self, path):
+        self.path = path
+        self.debug = False
+
+    @property
+    def old_time(self):
+        with open(self.path, "r") as r:
+            return r.read()
+
+    @property
+    def new_time(self):
+        return time.time()
+
+    def compare(self, h):
+        the_time = self.new_time - self.old_time
+        if not self.debug:
+            return the_time >= h * 3600
+        else:
+            return True
