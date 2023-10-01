@@ -16,7 +16,7 @@ class CacaTimeTool:
         return time.time()
 
     def compare(self, h):
-        the_time = self.new_time - self.old_time
+        the_time = float(self.new_time) - float(self.old_time)
         if not self.debug:
             return the_time >= h * 3600
         else:
