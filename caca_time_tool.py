@@ -13,10 +13,14 @@ class CacaTimeTool:
 
     @property
     def old_time(self):
-        with open(self.path, "r") as r:
-            output = r.read()
-            r.close()
-            return output
+        try:
+            with open(self.path, "r") as r:
+                output = r.read()
+                r.close()
+                return output
+        except IOError:
+            self.init()
+            return time.time()
 
     @property
     def new_time(self):
