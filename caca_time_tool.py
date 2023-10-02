@@ -18,6 +18,12 @@ class CacaTimeTool:
     def compare(self, h):
         the_time = float(self.new_time) - float(self.old_time)
         if not self.debug:
-            return the_time >= h * 3600
+            if the_time >= h * 3600:
+                with open(self.path, "w") as w:
+                    w.write(str(time.time()))
+                return True
+            else:
+                return False
         else:
+            print("Warning:The DEBUG mode is on!")
             return True
