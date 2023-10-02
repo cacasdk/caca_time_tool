@@ -6,6 +6,10 @@ class CacaTimeTool:
         self.path = path
         self.debug = False
 
+    def init(self):
+        with open(self.path, "w") as w:
+            return w.read()
+
     @property
     def old_time(self):
         with open(self.path, "r") as r:
