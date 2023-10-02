@@ -8,12 +8,15 @@ class CacaTimeTool:
 
     def init(self):
         with open(self.path, "w") as w:
-            return w.read()
+            w.write()
+            w.close()
 
     @property
     def old_time(self):
         with open(self.path, "r") as r:
-            return r.read()
+            output = r.read()
+            r.close()
+            return output
 
     @property
     def new_time(self):
@@ -25,6 +28,7 @@ class CacaTimeTool:
             if the_time >= h * 3600:
                 with open(self.path, "w") as w:
                     w.write(str(time.time()))
+                    w.close()
                 return True
             else:
                 return False
